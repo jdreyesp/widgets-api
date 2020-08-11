@@ -25,8 +25,8 @@ public class WidgetController {
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public Widget createWidget(@RequestBody Widget widget) {
-        return Optional.ofNullable(widget.getZIndex()).isEmpty() ?
+        return Optional.ofNullable(widget.getZindex()).isEmpty() ?
                 widgetService.createWidget(widget.getCoordinates(), widget.getWidth(), widget.getHeight()) :
-                widgetService.createWidget(widget.getCoordinates(), widget.getZIndex(), widget.getWidth(), widget.getHeight());
+                widgetService.createWidget(widget.getCoordinates(), widget.getZindex(), widget.getWidth(), widget.getHeight());
     }
 }

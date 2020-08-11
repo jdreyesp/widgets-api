@@ -1,6 +1,5 @@
 package org.example.widgetsapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +18,7 @@ public class Widget implements Comparable<Widget> {
     private Point coordinates;
 
     @Nullable
-    private Integer zIndex;
+    private Integer zindex;
 
     private int width, height;
 
@@ -40,7 +39,7 @@ public class Widget implements Comparable<Widget> {
 
     @Override
     public int compareTo(Widget o) {
-        return zIndex - o.zIndex;
+        return zindex - o.zindex;
     }
 }
 

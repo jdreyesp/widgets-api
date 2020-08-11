@@ -4,7 +4,6 @@ import org.example.widgetsapi.entity.Point;
 import org.example.widgetsapi.entity.Widget;
 import org.example.widgetsapi.repository.WidgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.TreeSet;
@@ -23,7 +22,7 @@ public class WidgetService {
 
     public synchronized Widget createWidget(Point point, int width, int height) {
         final TreeSet<Widget> widgets = widgetRepository.getAll();
-        final int zIndex = widgets.isEmpty() ? DEFAULT_ZINDEX : widgets.last().getZIndex() + 1;
+        final int zIndex = widgets.isEmpty() ? DEFAULT_ZINDEX : widgets.last().getZindex() + 1;
 
         return createWidget(point, zIndex, width, height);
     }

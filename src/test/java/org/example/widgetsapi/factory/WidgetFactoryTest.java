@@ -26,6 +26,6 @@ public class WidgetFactoryTest {
         assertEquals(width, widget.getWidth());
         assertEquals(height, widget.getHeight());
 
-        assertEquals(zIndex, widget.getZIndex());
+        assertEquals(zIndex, widget.getZindex());
     }
 }
