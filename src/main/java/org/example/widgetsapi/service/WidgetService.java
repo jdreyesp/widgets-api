@@ -4,9 +4,12 @@ import org.example.widgetsapi.entity.Point;
 import org.example.widgetsapi.entity.Widget;
 import org.example.widgetsapi.repository.WidgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.TreeSet;
 
+@Service
 public class WidgetService {
 
     public static final int DEFAULT_ZINDEX = 0;

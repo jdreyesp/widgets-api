@@ -1,7 +1,10 @@
 package org.example.widgetsapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -9,12 +12,17 @@ import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Widget implements Comparable<Widget> {
 
     private UUID id;
     private Point coordinates;
-    private int zIndex;
+
+    @Nullable
+    private Integer zIndex;
+
     private int width, height;
+
     private LocalDateTime lastModificationDate;
 
     @Override

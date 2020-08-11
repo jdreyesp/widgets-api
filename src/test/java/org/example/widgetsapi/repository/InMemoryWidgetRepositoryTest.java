@@ -1,6 +1,8 @@
 package org.example.widgetsapi.repository;
 
 import org.example.widgetsapi.entity.Widget;
+import org.example.widgetsapi.repository.InMemoryWidgetRepository;
+import org.example.widgetsapi.repository.WidgetRepository;
 import org.example.widgetsapi.utils.WidgetTestBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

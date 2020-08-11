@@ -3,12 +3,14 @@ package org.example.widgetsapi.repository;
 import org.example.widgetsapi.entity.Point;
 import org.example.widgetsapi.entity.Widget;
 import org.example.widgetsapi.factory.WidgetFactory;
+import org.springframework.stereotype.Repository;
 
 import java.util.TreeSet;
 
 /**
  * In-memory implementation of the z-index collection of elements. It's represented by a {@link TreeSet<Widget>}
  */
+@Repository
 public class InMemoryWidgetRepository implements WidgetRepository {
 
     private static volatile TreeSet<Widget> widgets = new TreeSet<>();

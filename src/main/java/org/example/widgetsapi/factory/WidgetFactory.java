@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class WidgetFactory {
 
-    public static Widget of(final Point point, final int zIndex, int width, int height) {
+    public static Widget of(final Point point, final Integer zIndex, int width, int height) {
         return new Widget(UUID.randomUUID(), point, zIndex, width, height, LocalDateTime.now());
     }
 
