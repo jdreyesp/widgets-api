@@ -4,8 +4,9 @@ import org.example.widgetsapi.entity.Point;
 import org.example.widgetsapi.entity.Widget;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class WidgetFactoryTest {
 
@@ -17,15 +18,15 @@ public class WidgetFactoryTest {
         final int width = 10, height = 20, zIndex = 5;
 
         //When
-        final Widget widget = WidgetFactory.of(point, zIndex, width, height);
+        final Widget widget = WidgetFactory.of(point, Optional.of(zIndex), width, height);
 
         //Then
-        assertNotNull(widget.getId());
+        assertNull(widget.getId());
         assertEquals(x, widget.getCoordinates().getX());
         assertEquals(y, widget.getCoordinates().getY());
         assertEquals(width, widget.getWidth());
         assertEquals(height, widget.getHeight());
 
-        assertEquals(zIndex, widget.getZindex());
+        assertEquals(zIndex, widget.getZindex().get());
     }
 }

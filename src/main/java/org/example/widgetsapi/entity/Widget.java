@@ -3,10 +3,10 @@ package org.example.widgetsapi.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 @Getter
@@ -14,15 +14,11 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Widget implements Comparable<Widget> {
 
-    private UUID id;
-    private Point coordinates;
-
-    @Nullable
-    private Integer zindex;
-
-    private int width, height;
-
-    private LocalDateTime lastModificationDate;
+    private final UUID id;
+    private final Point coordinates;
+    private final Optional<Integer> zindex;
+    private final int width, height;
+    private final LocalDateTime lastModificationDate;
 
     @Override
     public boolean equals(Object o) {
@@ -39,7 +35,7 @@ public class Widget implements Comparable<Widget> {
 
     @Override
     public int compareTo(Widget o) {
-        return zindex - o.zindex;
+        return zindex.get() - o.zindex.get();
     }
 }
 

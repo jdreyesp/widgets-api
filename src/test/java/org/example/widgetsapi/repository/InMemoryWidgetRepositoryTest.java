@@ -1,8 +1,6 @@
 package org.example.widgetsapi.repository;
 
 import org.example.widgetsapi.entity.Widget;
-import org.example.widgetsapi.repository.InMemoryWidgetRepository;
-import org.example.widgetsapi.repository.WidgetRepository;
 import org.example.widgetsapi.utils.WidgetTestBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +23,7 @@ public class InMemoryWidgetRepositoryTest {
         //Given
 
         //When
-        Widget widget = widgetRepositorySUT.create(WidgetTestBuilder.POINT, WidgetTestBuilder.Z_INDEX, WidgetTestBuilder.WIDTH, WidgetTestBuilder.HEIGHT);
+        Widget widget = widgetRepositorySUT.add(WidgetTestBuilder.createTestWidget(WidgetTestBuilder.Z_INDEX));
 
         //Then
         TreeSet<Widget> widgets = widgetRepositorySUT.getAll();
@@ -38,10 +36,10 @@ public class InMemoryWidgetRepositoryTest {
         //Given
 
         //When
-        widgetRepositorySUT.create(WidgetTestBuilder.POINT, WidgetTestBuilder.Z_INDEX, WidgetTestBuilder.WIDTH, WidgetTestBuilder.HEIGHT);
+        widgetRepositorySUT.add(WidgetTestBuilder.createTestWidget(WidgetTestBuilder.Z_INDEX));
 
         /** Last widget will be the one with greater z_index */
-        Widget widget = widgetRepositorySUT.create(WidgetTestBuilder.POINT, WidgetTestBuilder.Z_INDEX + 1, WidgetTestBuilder.WIDTH, WidgetTestBuilder.HEIGHT);
+        Widget widget = widgetRepositorySUT.add(WidgetTestBuilder.createTestWidget(WidgetTestBuilder.Z_INDEX + 1));
 
         //Then
         TreeSet<Widget> widgets = widgetRepositorySUT.getAll();
@@ -59,5 +57,17 @@ public class InMemoryWidgetRepositoryTest {
 
         //Then
         assertTrue(widgets.isEmpty());
+    }
+
+    @Test
+    public void shouldRemoveWidgetByUUID() {
+        //Given
+        Widget widget = widgetRepositorySUT.add(WidgetTestBuilder.createTestWidget(WidgetTestBuilder.Z_INDEX));
+
+        //When
+        boolean removed = widgetRepositorySUT.remove(widget.getId());
+
+        //Then
+        assertTrue(removed);
     }
 }

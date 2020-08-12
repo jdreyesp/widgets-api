@@ -6,5 +6,5 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Point {
-    private int x,y;
+    private final int x,y;
 }

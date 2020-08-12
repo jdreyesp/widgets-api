@@ -4,7 +4,7 @@ import org.example.widgetsapi.entity.Point;
 import org.example.widgetsapi.entity.Widget;
 import org.example.widgetsapi.factory.WidgetFactory;
 
-import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 public class WidgetTestBuilder {
@@ -12,10 +12,10 @@ public class WidgetTestBuilder {
     public static final Point POINT = new Point(X, Y);
 
     public static Widget createTestWidget(Integer zIndex) {
-        return WidgetFactory.of(POINT, zIndex, WIDTH, HEIGHT);
+        return WidgetFactory.of(UUID.randomUUID(), POINT, Optional.ofNullable(zIndex).or(() -> Optional.of(Z_INDEX)), WIDTH, HEIGHT, null);
     }
 
-    public static Widget createTestWidget(Integer zIndex, LocalDateTime lastModificationDate) {
-        return new Widget(UUID.randomUUID(), POINT, zIndex, WIDTH, HEIGHT, lastModificationDate);
+    public static Widget createTestWidget() {
+        return WidgetFactory.of(POINT, Optional.of(Z_INDEX), WIDTH, HEIGHT);
     }
 }

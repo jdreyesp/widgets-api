@@ -8,8 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/widget")
 public class WidgetController {
@@ -25,8 +23,6 @@ public class WidgetController {
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public Widget createWidget(@RequestBody Widget widget) {
-        return Optional.ofNullable(widget.getZindex()).isEmpty() ?
-                widgetService.createWidget(widget.getCoordinates(), widget.getWidth(), widget.getHeight()) :
-                widgetService.createWidget(widget.getCoordinates(), widget.getZindex(), widget.getWidth(), widget.getHeight());
+        return widgetService.createWidget(widget);
     }
 }
